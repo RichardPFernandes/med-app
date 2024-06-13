@@ -17,6 +17,7 @@ import ibuprofeno from "./assets/medicamentos/Ibuprofeno.png"
 import doril from "./assets/medicamentos/Doril.jpg"
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Form from "./pages/Form";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
     path: "/Medicamentos",
     element: <BuscaMedicamento />,
   },
+  {
+    path: "/CadastroMedicamentos",
+    element: <Form />,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

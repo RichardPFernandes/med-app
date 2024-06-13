@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import "../styles/PaginaInicial.css";
 import CardFarmacia from "../components/CardFarmacia";
@@ -22,6 +22,7 @@ import dorflex from "../assets/medicamentos/Dorflex.jpg";
 import doril from "../assets/medicamentos/Doril.jpg";
 import novalgina from "../assets/medicamentos/Novalgina.png";
 import buscopan from "../assets/medicamentos/Buscopan.jpg";
+import fetchData from "../api/fetchData";
 
 
 const medicamentos = [
@@ -80,6 +81,15 @@ export default function PaginaInicial() {
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [animating, setAnimating] = useState(false);
+  const [medicamentosApi, setMedicamentosApi] = useState([]);
+  
+  async function fetchDataMed() {
+    setMedicamentosApi(await fetchData());
+  }
+
+  useEffect(() => {
+    fetchDataMed();
+  }, []);
 
   const goToNextSlide = () => {
     if (currentSlide < medicamentos.length - 2) {
@@ -186,11 +196,10 @@ export default function PaginaInicial() {
             {medicamentos.slice(currentSlide, currentSlide + 4).map((medicamento) => (
               <CardMedicamento
                 key={medicamento.id}
-                nome={medicamento.nome}
+                nome={medicamentosApi.find(med => med.id === medicamento.id)?.generic_name}
                 imagem={medicamento.imagem}
-                dosagem={medicamento.dosagem}
+                dosagem={medicamentosApi.find(med => med.id === medicamento.id)?.dosage_form}
                 className={`card_medicamento ${animating ? "animating" : ""}`}
-                href={medicamento.href}
               />
             ))}
           </div>
