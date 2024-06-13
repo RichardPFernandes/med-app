@@ -6,15 +6,6 @@ import PaginaInicial from "./pages/PaginaInicial";
 import BuscaMedicamento from "./pages/BuscaMedicamento";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Medicamento from "./components/Medicamento";
-
-import paracetamol from "./assets/paracetamol.png";
-import dorflex from "./assets/medicamentos/Dorflex.jpg";
-import buscopan from "./assets/medicamentos/Buscopan.jpg";
-import dipirona from "./assets/medicamentos/Dipirona.jpg"
-import novalgina from "./assets/medicamentos/Novalgina.png"
-import ibuprofeno from "./assets/medicamentos/Ibuprofeno.png"
-import doril from "./assets/medicamentos/Doril.jpg"
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Form from "./pages/Form";
